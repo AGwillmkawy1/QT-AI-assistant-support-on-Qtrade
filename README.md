@@ -31,7 +31,7 @@ ollama serve          # runs on http://localhost:11434 by default
 **Option B — Anthropic API (free-tier)**
 
 ```bash
-export ANTHROPIC_API_KEY=sk-ant-...
+export ANTHROPIC_API_KEY="sk-ant-your-key-here"
 ```
 
 The assistant tries Ollama first; if it's unreachable and `ANTHROPIC_API_KEY` is set, it falls back to `claude-haiku-4-5-20251001` automatically.
