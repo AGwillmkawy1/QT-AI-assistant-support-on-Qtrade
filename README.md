@@ -66,8 +66,192 @@ python cli.py --docs path/to/docs
 |---|---|---|
 | `OLLAMA_BASE_URL` | `http://localhost:11434` | Ollama server URL |
 | `OLLAMA_MODEL` | `llama3.2` | Ollama model name |
-| `ANTHROPIC_API_KEY` | *(unset)* | Enables Anthropic fallback |
+| `GROQ_API_KEY` | *(unset)* | Enables Groq free-tier backend |
+| `GROQ_MODEL` | `llama-3.1-8b-instant` | Groq model to use |
+| `ANTHROPIC_API_KEY` | *(unset)* | Enables Anthropic backend (paid) |
 | `ANTHROPIC_MODEL` | `claude-haiku-4-5-20251001` | Anthropic model to use |
+
+---
+
+## Sample Queries & Expected Terminal Output
+
+Run `python cli.py` and try the queries below. They cover every behaviour the assistant can produce: grounded answers with citations, safety escalation, human-request escalation, and no-answer escalation.
+
+---
+
+### Answerable questions — grounded answers from the docs
+
+**1. Returns with a fee**
+```
+You: I opened the box, can I still return it, and is there a fee?
+
+Yes, you can still return an opened item within 30 days of delivery,
+but a 15% restocking fee applies unless the item is defective.
+Refunds are issued to the original payment method within 5–7 business
+days after the returned item is received.
+
+Sources: Returns & Refunds
+────────────────────────────────────────────────────────────
+```
+
+**2. SmartHub reset**
+```
+You: How do I reset my SmartHub?
+
+To reset the SmartHub, hold the back button for 10 seconds until the
+light blinks amber. If you have connection issues afterwards, restart
+your router and retry.
+
+Sources: SmartHub Setup & Troubleshooting
+────────────────────────────────────────────────────────────
+```
+
+**3. Shipping time and cost**
+```
+You: How long does standard shipping take and is it free?
+
+Standard shipping takes 3–5 business days and is free on orders over
+$50. Express shipping is available for $15 and takes 1–2 business days.
+
+Sources: Shipping
+────────────────────────────────────────────────────────────
+```
+
+**4. Wi-Fi connection**
+```
+You: How do I connect my SmartHub to Wi-Fi?
+
+Open the QTrade app, go to Devices > Add, and follow the prompts.
+Note that the SmartHub only supports 2.4 GHz networks. If it won't
+connect, restart your router and retry.
+
+Sources: SmartHub Setup & Troubleshooting
+────────────────────────────────────────────────────────────
+```
+
+**5. Warranty coverage**
+```
+You: What does the warranty cover?
+
+All devices include a 1-year limited warranty covering manufacturing
+defects. It does not cover accidental damage, water damage, or normal
+wear. To file a claim, submit your order number and a description of
+the issue through the support portal.
+
+Sources: Warranty
+────────────────────────────────────────────────────────────
+```
+
+**6. Filing a warranty claim**
+```
+You: How do I file a warranty claim?
+
+Submit your order number and a description of the issue through the
+support portal. Approved claims are repaired or replaced at QTrade's
+discretion.
+
+Sources: Warranty
+────────────────────────────────────────────────────────────
+```
+
+**7. Final sale and defective items (tricky)**
+```
+You: Can I return a final sale item if it's defective?
+
+Items marked final sale cannot be returned. However, if the item is
+defective, it may be covered under the 1-year limited warranty —
+submit a claim through the support portal with your order number.
+
+Sources: Returns & Refunds, Warranty
+────────────────────────────────────────────────────────────
+```
+
+**8. Order not shipped after 4 days (partial)**
+```
+You: My order hasn't shipped in 4 days, where is it?
+
+According to our shipping policy, if an order has not shipped within
+3 business days you should contact support. Since your order is now
+4 days old without shipping, please reach out to our support team
+for an update.
+
+Sources: Shipping
+────────────────────────────────────────────────────────────
+```
+
+---
+
+### Safety escalations — routed to human immediately
+
+**9. Burning smell / overheating**
+```
+You: My SmartHub is getting very hot and smells like burning
+
+[ESCALATED — SAFETY]
+This sounds like it may involve a safety hazard. Please stop using
+the device immediately and contact our support team directly.
+Routing you to a human agent now.
+────────────────────────────────────────────────────────────
+```
+
+**10. Smoke and sparks**
+```
+You: My device is smoking and sparking
+
+[ESCALATED — SAFETY]
+This sounds like it may involve a safety hazard. Please stop using
+the device immediately and contact our support team directly.
+Routing you to a human agent now.
+────────────────────────────────────────────────────────────
+```
+
+---
+
+### Human-request escalations — customer asks for a person
+
+**11. Angry customer demanding a manager**
+```
+You: This is the third time I've called, I want a refund and a manager NOW
+
+[ESCALATED — HUMAN REQUESTED]
+I understand you'd like to speak with a human agent.
+Routing you now — someone will be with you shortly.
+────────────────────────────────────────────────────────────
+```
+
+**12. Asking for a real person**
+```
+You: I want to speak to a real person
+
+[ESCALATED — HUMAN REQUESTED]
+I understand you'd like to speak with a human agent.
+Routing you now — someone will be with you shortly.
+────────────────────────────────────────────────────────────
+```
+
+---
+
+### No-answer escalations — topic not in the docs
+
+**13. Bulk discounts**
+```
+You: Do you offer bulk discounts for commercial installs?
+
+[ESCALATED — NO GROUNDED ANSWER]
+I don't have enough information in our help docs to answer that
+confidently. I'm routing you to a human agent who can help further.
+────────────────────────────────────────────────────────────
+```
+
+**14. Cryptocurrency payment**
+```
+You: Can I pay with cryptocurrency?
+
+[ESCALATED — NO GROUNDED ANSWER]
+I don't have enough information in our help docs to answer that
+confidently. I'm routing you to a human agent who can help further.
+────────────────────────────────────────────────────────────
+```
 
 ---
 
