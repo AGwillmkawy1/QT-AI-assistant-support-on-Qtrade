@@ -83,15 +83,8 @@ Run `python cli.py` and try the queries below. They cover every behaviour the as
 
 **1. Returns with a fee**
 ```
-You: I opened the box, can I still return it, and is there a fee?
+<img width="1454" height="187" alt="image" src="https://github.com/user-attachments/assets/b2b82c3c-ea10-4b14-b3f2-e800d194c325" />
 
-Yes, you can still return an opened item within 30 days of delivery,
-but a 15% restocking fee applies unless the item is defective.
-Refunds are issued to the original payment method within 5–7 business
-days after the returned item is received.
-
-Sources: Returns & Refunds
-────────────────────────────────────────────────────────────
 ```
 
 **2. SmartHub reset**
@@ -100,75 +93,38 @@ Sources: Returns & Refunds
 
 **3. Shipping time and cost**
 ```
-You: How long does standard shipping take and is it free?
+<img width="1439" height="193" alt="image" src="https://github.com/user-attachments/assets/5a23d54e-debc-41d3-b5d0-fef8e27c81be" />
 
-Standard shipping takes 3–5 business days and is free on orders over
-$50. Express shipping is available for $15 and takes 1–2 business days.
-
-Sources: Shipping
-────────────────────────────────────────────────────────────
 ```
 
 **4. Wi-Fi connection**
 ```
-You: How do I connect my SmartHub to Wi-Fi?
+<img width="1369" height="189" alt="image" src="https://github.com/user-attachments/assets/d6b173db-e4f5-4ea4-9b2e-bd85c5cb535a" />
 
-Open the QTrade app, go to Devices > Add, and follow the prompts.
-Note that the SmartHub only supports 2.4 GHz networks. If it won't
-connect, restart your router and retry.
-
-Sources: SmartHub Setup & Troubleshooting
-────────────────────────────────────────────────────────────
 ```
 
 **5. Warranty coverage**
 ```
-You: What does the warranty cover?
+<img width="1096" height="210" alt="image" src="https://github.com/user-attachments/assets/9413db7d-ad46-4d25-9b93-605080dbd3bd" />
 
-All devices include a 1-year limited warranty covering manufacturing
-defects. It does not cover accidental damage, water damage, or normal
-wear. To file a claim, submit your order number and a description of
-the issue through the support portal.
-
-Sources: Warranty
-────────────────────────────────────────────────────────────
 ```
 
 **6. Filing a warranty claim**
 ```
-You: How do I file a warranty claim?
+<img width="1472" height="212" alt="image" src="https://github.com/user-attachments/assets/f4f39d55-1fa5-45c2-9143-49e7ca386b83" />
 
-Submit your order number and a description of the issue through the
-support portal. Approved claims are repaired or replaced at QTrade's
-discretion.
-
-Sources: Warranty
-────────────────────────────────────────────────────────────
 ```
 
 **7. Final sale and defective items (tricky)**
 ```
-You: Can I return a final sale item if it's defective?
+<img width="891" height="164" alt="image" src="https://github.com/user-attachments/assets/394f054c-b5c3-4667-8d96-ed552bd23087" />
 
-Items marked final sale cannot be returned. However, if the item is
-defective, it may be covered under the 1-year limited warranty —
-submit a claim through the support portal with your order number.
-
-Sources: Returns & Refunds, Warranty
-────────────────────────────────────────────────────────────
 ```
 
 **8. Order not shipped after 4 days (partial)**
 ```
-You: My order hasn't shipped in 4 days, where is it?
+<img width="1477" height="207" alt="image" src="https://github.com/user-attachments/assets/02e7f238-e9e2-4c2f-90d6-2925768e7192" />
 
-According to our shipping policy, if an order has not shipped within
-3 business days you should contact support. Since your order is now
-4 days old without shipping, please reach out to our support team
-for an update.
-
-Sources: Shipping
-────────────────────────────────────────────────────────────
 ```
 
 ---
@@ -177,24 +133,14 @@ Sources: Shipping
 
 **9. Burning smell / overheating**
 ```
-You: My SmartHub is getting very hot and smells like burning
+<img width="1476" height="187" alt="image" src="https://github.com/user-attachments/assets/bf23cfc8-b717-4f88-a36f-bc790ee716c4" />
 
-[ESCALATED — SAFETY]
-This sounds like it may involve a safety hazard. Please stop using
-the device immediately and contact our support team directly.
-Routing you to a human agent now.
-────────────────────────────────────────────────────────────
 ```
 
 **10. Smoke and sparks**
 ```
-You: My device is smoking and sparking
+<img width="1472" height="164" alt="image" src="https://github.com/user-attachments/assets/de95c7d4-e493-4c47-98d7-1346558843be" />
 
-[ESCALATED — SAFETY]
-This sounds like it may involve a safety hazard. Please stop using
-the device immediately and contact our support team directly.
-Routing you to a human agent now.
-────────────────────────────────────────────────────────────
 ```
 
 ---
@@ -203,22 +149,14 @@ Routing you to a human agent now.
 
 **11. Angry customer demanding a manager**
 ```
-You: This is the third time I've called, I want a refund and a manager NOW
+<img width="1139" height="141" alt="image" src="https://github.com/user-attachments/assets/148d18c2-6208-408f-be30-d975b4e911e4" />
 
-[ESCALATED — HUMAN REQUESTED]
-I understand you'd like to speak with a human agent.
-Routing you now — someone will be with you shortly.
-────────────────────────────────────────────────────────────
 ```
 
 **12. Asking for a real person**
 ```
-You: I want to speak to a real person
+<img width="1014" height="142" alt="image" src="https://github.com/user-attachments/assets/6bc6a1f0-ae97-4ba3-a86b-00d1b0cbe2ae" />
 
-[ESCALATED — HUMAN REQUESTED]
-I understand you'd like to speak with a human agent.
-Routing you now — someone will be with you shortly.
-────────────────────────────────────────────────────────────
 ```
 
 ---
@@ -227,22 +165,14 @@ Routing you now — someone will be with you shortly.
 
 **13. Bulk discounts**
 ```
-You: Do you offer bulk discounts for commercial installs?
+<img width="1278" height="146" alt="image" src="https://github.com/user-attachments/assets/b6b222b9-e58d-4690-afe9-760f7017aadb" />
 
-[ESCALATED — NO GROUNDED ANSWER]
-I don't have enough information in our help docs to answer that
-confidently. I'm routing you to a human agent who can help further.
-────────────────────────────────────────────────────────────
 ```
 
 **14. Cryptocurrency payment**
 ```
-You: Can I pay with cryptocurrency?
+<img width="1244" height="140" alt="image" src="https://github.com/user-attachments/assets/5fd79a95-cd9f-498b-999b-69224de26c96" />
 
-[ESCALATED — NO GROUNDED ANSWER]
-I don't have enough information in our help docs to answer that
-confidently. I'm routing you to a human agent who can help further.
-────────────────────────────────────────────────────────────
 ```
 
 ---
