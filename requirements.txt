@@ -2,5 +2,7 @@ sentence-transformers>=2.7,<4
 numpy>=1.26
 requests>=2.31
 
-# Optional: only needed when ANTHROPIC_API_KEY is set
-# anthropic>=0.30
+# Optional LLM backends (install whichever you use)
+# groq>=0.9          — free tier, recommended (console.groq.com)
+# anthropic>=0.30    — paid tier
+

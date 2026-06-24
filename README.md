@@ -28,13 +28,24 @@ ollama pull llama3.2
 ollama serve          # runs on http://localhost:11434 by default
 ```
 
-**Option B — Anthropic API (free-tier)**
+**Option B — Groq API (free tier, recommended)**
+
+Sign up at **console.groq.com** (free, no credit card), create an API key, then:
 
 ```bash
-export ANTHROPIC_API_KEY="sk-ant-your-key-here"
+pip install groq
+set GROQ_API_KEY=your-groq-key-here   # Windows
+# export GROQ_API_KEY=your-groq-key-here  # macOS/Linux
 ```
 
-The assistant tries Ollama first; if it's unreachable and `ANTHROPIC_API_KEY` is set, it falls back to `claude-haiku-4-5-20251001` automatically.
+**Option C — Anthropic API (paid)**
+
+```bash
+pip install anthropic
+set ANTHROPIC_API_KEY=your-key-here
+```
+
+The assistant tries Ollama first, then Groq, then Anthropic — whichever key is set.
 
 ### 3. Run
 

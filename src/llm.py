@@ -1,7 +1,8 @@
 """
-LLM interface — tries Ollama first, falls back to Anthropic API if
-ANTHROPIC_API_KEY is set.  Set OLLAMA_MODEL env var to override the
-default model (llama3.2).
+LLM interface — priority order:
+  1. Ollama (local, OLLAMA_MODEL, default llama3.2)
+  2. Groq   (free tier, GROQ_API_KEY)
+  3. Anthropic (paid, ANTHROPIC_API_KEY)
 """
 
 from __future__ import annotations
@@ -46,6 +47,21 @@ def _call_ollama(query: str, context: str) -> str:
     return resp.json()["message"]["content"].strip()
 
 
+def _call_groq(query: str, context: str) -> str:
+    from groq import Groq  # optional dep
+
+    client = Groq(api_key=os.environ["GROQ_API_KEY"])
+    chat = client.chat.completions.create(
+        model=os.getenv("GROQ_MODEL", "llama-3.1-8b-instant"),
+        messages=[
+            {"role": "system", "content": _SYSTEM_PROMPT},
+            {"role": "user", "content": _build_user_message(query, context)},
+        ],
+        max_tokens=512,
+    )
+    return chat.choices[0].message.content.strip()
+
+
 def _call_anthropic(query: str, context: str) -> str:
     import anthropic  # optional dep
 
@@ -61,16 +77,18 @@ def _call_anthropic(query: str, context: str) -> str:
 
 def generate(query: str, context: str) -> str:
     """
-    Generate a grounded answer.  Tries Ollama; falls back to Anthropic API
-    if ANTHROPIC_API_KEY is set and Ollama is unavailable.
+    Generate a grounded answer. Tries Ollama first, then Groq, then Anthropic.
+    Set GROQ_API_KEY for the free Groq option (console.groq.com).
     """
     try:
         return _call_ollama(query, context)
     except Exception as ollama_err:
-        api_key = os.getenv("ANTHROPIC_API_KEY")
-        if api_key:
+        if os.getenv("GROQ_API_KEY"):
+            return _call_groq(query, context)
+        if os.getenv("ANTHROPIC_API_KEY"):
             return _call_anthropic(query, context)
         raise RuntimeError(
-            f"Ollama unavailable ({ollama_err}) and ANTHROPIC_API_KEY is not set. "
-            "Start Ollama or export ANTHROPIC_API_KEY."
+            f"No LLM available. Ollama error: {ollama_err}\n"
+            "Fix: run 'ollama serve', or set GROQ_API_KEY (free at console.groq.com), "
+            "or set ANTHROPIC_API_KEY."
         ) from ollama_err
