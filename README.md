@@ -95,16 +95,8 @@ Sources: Returns & Refunds
 ```
 
 **2. SmartHub reset**
-```
-You: How do I reset my SmartHub?
+<img width="1471" height="244" alt="image" src="https://github.com/user-attachments/assets/f9b390e4-6f3f-4156-a547-a086c6292584" />
 
-To reset the SmartHub, hold the back button for 10 seconds until the
-light blinks amber. If you have connection issues afterwards, restart
-your router and retry.
-
-Sources: SmartHub Setup & Troubleshooting
-────────────────────────────────────────────────────────────
-```
 
 **3. Shipping time and cost**
 ```
