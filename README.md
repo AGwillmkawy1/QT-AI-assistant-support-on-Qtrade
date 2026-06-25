@@ -184,9 +184,15 @@ user query
     ▼ vector_store.py  — top-3 cosine search
     ▼ retriever.py     — filter by grounding threshold (≥ 0.35)
     ▼ escalation.py    — safety / human-request / no-answer checks
-    ▼ llm.py           — Ollama or Anthropic, cite-only prompt
+    ▼ llm.py           — Groq ✅ (used) → Ollama → Anthropic, cite-only prompt
     ▼ cli.py           — prints answer + sources, or escalation tag
 ```
+
+> **LLM used in this project:** [Groq](https://console.groq.com) free tier running
+> `llama-3.1-8b-instant`. Groq was chosen because it is genuinely free (no credit
+> card), requires no local installation, and responds in under 1 second. The code
+> also supports Ollama (fully local) and Anthropic (paid) as drop-in alternatives
+> — set the matching environment variable and the same pipeline works unchanged.
 
 ### Key decisions and tradeoffs
 
@@ -198,7 +204,9 @@ user query
 
 **Grounding threshold (0.35)**: empirically, relevant chunks score ≥ 0.40 and off-topic queries score ≤ 0.25 on this corpus. The 0.35 midpoint avoids both false escalations and hallucinated answers.
 
-**LLM prompt**: the system prompt forbids the model from using its training knowledge and mandates a `Sources:` line. This makes the citation behaviour deterministic regardless of model choice.
+**LLM used**: [Groq](https://console.groq.com) free tier with `llama-3.1-8b-instant` — no credit card, sub-second responses, no local model download. The code falls back to Ollama (local) or Anthropic (paid) if a different key is set, but Groq is what was used to produce all sample outputs in this README.
+
+**LLM prompt**: the system prompt forbids the model from using its training knowledge and keeps citations handled by the retrieval metadata rather than the model output, making citation behaviour consistent regardless of which backend is active.
 
 **Escalation rule (primary)**: safety keyword detection. If the customer's message contains signals of a physical hazard (burning, hot, smoke, sparks, fire, melting, smell), the assistant refuses to answer and routes to a human immediately. Physical safety cannot be addressed by a support doc; a wrong or delayed answer could cause harm.
 
