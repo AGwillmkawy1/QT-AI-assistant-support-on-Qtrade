@@ -20,7 +20,7 @@ pip install -r requirements.txt
 
 ### 2. Start an LLM (choose one)
 
-**Option A — Ollama (fully local, recommended)**
+**Option A - Ollama (fully local, recommended)**
 
 ```bash
 # Install Ollama from https://ollama.com, then:
@@ -28,7 +28,7 @@ ollama pull llama3.2
 ollama serve          # runs on http://localhost:11434 by default
 ```
 
-**Option B — Groq API (free tier, recommended)**   On my side, I used Groq API Key
+**Option B - Groq API (free tier, recommended)**   On my side, I used Groq API Key
 
 Sign up at **console.groq.com** (free, no credit card), create an API key, then:
 
@@ -38,14 +38,14 @@ set GROQ_API_KEY=your-groq-key-here   # Windows
 # export GROQ_API_KEY=your-groq-key-here  # macOS/Linux
 ```
 
-**Option C — Anthropic API (paid)**
+**Option C - Anthropic API (paid)**
 
 ```bash
 pip install anthropic
 set ANTHROPIC_API_KEY=your-key-here
 ```
 
-The assistant tries Ollama first, then Groq, then Anthropic — whichever key is set.
+The assistant tries Ollama first, then Groq, then Anthropic - whichever key is set.
 
 ### 3. Run
 
@@ -79,7 +79,7 @@ Run `python cli.py` and try the queries below. They cover every behaviour the as
 
 ---
 
-### Answerable questions — grounded answers from the docs
+### Answerable questions - grounded answers from the docs
 
 **1. Returns with a fee**
 
@@ -123,7 +123,7 @@ Run `python cli.py` and try the queries below. They cover every behaviour the as
 
 ---
 
-### Safety escalations — routed to human immediately
+### Safety escalations - routed to human immediately
 
 **9. Burning smell / overheating**
 
@@ -137,7 +137,7 @@ Run `python cli.py` and try the queries below. They cover every behaviour the as
 
 ---
 
-### Human-request escalations — customer asks for a person
+### Human-request escalations - customer asks for a person
 
 **11. Angry customer demanding a manager**
 
@@ -151,7 +151,7 @@ Run `python cli.py` and try the queries below. They cover every behaviour the as
 
 ---
 
-### No-answer escalations — topic not in the docs
+### No-answer escalations - topic not in the docs
 
 **13. Bulk discounts**
 
@@ -204,7 +204,7 @@ user query
 
 **Grounding threshold (0.35)**: empirically, relevant chunks score ≥ 0.40 and off-topic queries score ≤ 0.25 on this corpus. The 0.35 midpoint avoids both false escalations and hallucinated answers.
 
-**LLM used**: [Groq](https://console.groq.com) free tier with `llama-3.1-8b-instant` — no credit card, sub-second responses, no local model download. The code falls back to Ollama (local) or Anthropic (paid) if a different key is set, but Groq is what was used to produce all sample outputs in this README.
+**LLM used**: [Groq](https://console.groq.com) free tier with `llama-3.1-8b-instant` - no credit card, sub-second responses, no local model download. The code falls back to Ollama (local) or Anthropic (paid) if a different key is set, but Groq is what was used to produce all sample outputs in this README.
 
 **LLM prompt**: the system prompt forbids the model from using its training knowledge and keeps citations handled by the retrieval metadata rather than the model output, making citation behaviour consistent regardless of which backend is active.
 
@@ -217,9 +217,9 @@ user query
 | "I opened the box, can I still return it, and is there a fee?" | Answer |  Answers with 15% restocking fee from Returns & Refunds |
 | "How do I reset my SmartHub?" | Answer |  Answers with 10-second button hold from SmartHub doc |
 | "My order hasn't shipped in 4 days, where is it?" | Partial / escalate |  Cites 3-day contact rule; escalates if no tracking found |
-| "My SmartHub is getting very hot and smells like burning." | Escalate (safety) |  `[ESCALATED — SAFETY]` — safety keyword match |
-| "This is the third time I've called, I want a refund and a manager NOW." | Escalate |  `[ESCALATED — HUMAN REQUESTED]` — "manager" keyword |
-| "Do you offer bulk discounts for commercial installs?" | I don't know / escalate |  `[ESCALATED — NO GROUNDED ANSWER]` — below threshold |
+| "My SmartHub is getting very hot and smells like burning." | Escalate (safety) |  `[ESCALATED — SAFETY]` - safety keyword match |
+| "This is the third time I've called, I want a refund and a manager NOW." | Escalate |  `[ESCALATED — HUMAN REQUESTED]` - "manager" keyword |
+| "Do you offer bulk discounts for commercial installs?" | I don't know / escalate |  `[ESCALATED — NO GROUNDED ANSWER]` - below threshold |
 
 ---
 
@@ -229,7 +229,7 @@ user query
 
 **Implemented**: immediate escalation on safety keywords, explicit human requests, or no grounded answer.
 
-**Alternative — confidence-decay schedule**: the assistant answers but silently tracks a "frustration score" that increments on signals like repeated questions, negative sentiment, or multiple turns without resolution. It escalates only when the score crosses a threshold (e.g., after 3 failed turns). A first-contact deflection rate close to 100% is possible; the customer only sees a human when truly stuck.
+**Alternative - confidence-decay schedule**: the assistant answers but silently tracks a "frustration score" that increments on signals like repeated questions, negative sentiment, or multiple turns without resolution. It escalates only when the score crosses a threshold (e.g., after 3 failed turns). A first-contact deflection rate close to 100% is possible; the customer only sees a human when truly stuck.
 
 *What improves*: fewer unnecessary escalations for simple queries; agents handle genuinely hard cases. Lower cost per conversation.
 
@@ -255,7 +255,7 @@ Nothing breaks architecturally. NumPy brute-force stays sub-millisecond; sentenc
 
 **Measuring answer quality**
 - Build a golden test set (query → expected answer + expected source) from Appendix B and real support tickets.
-- Score each answer on: *retrieval recall* (did the right chunks come back?), *answer faithfulness* (is the answer supported by the retrieved context — checked with an LLM-as-judge), and *citation accuracy* (does `Sources:` match the actual chunk origin?).
+- Score each answer on: *retrieval recall* (did the right chunks come back?), *answer faithfulness* (is the answer supported by the retrieved context - checked with an LLM-as-judge), and *citation accuracy* (does `Sources:` match the actual chunk origin?).
 - Track escalation rate and false-escalation rate (a human reviews escalated tickets labelled "should have answered").
 
 **Catching regressions before customers**
@@ -289,14 +289,14 @@ Structured JSON logs (via `structlog` or Python's `logging` with a JSON formatte
 | `p95_latency_ms` | > 5 000 ms | LLM or embedding bottleneck |
 | `top_score_mean` | < 0.30 over 1 h | Retrieval quality drop |
 | `error_rate` | > 1% | LLM or Ollama service failure |
-| `safety_escalation_count` | any spike | Product safety event — page on-call immediately |
+| `safety_escalation_count` | any spike | Product safety event - page on-call immediately |
 
 ---
 
 ## What I'd do next
 
-1. **Stretch: handoff summary** — generate a 3-line summary (what was asked, what's known, why escalated) attached to the escalated ticket so the human agent has instant context.
-2. **Confidence threshold tuning** — collect 50 real queries, label expected outcomes, grid-search the threshold.
-3. **Evaluation harness** — pytest suite over all Appendix B queries with LLM-as-judge faithfulness scoring.
-4. **FastAPI endpoint** — `/ask` POST → `{answer, sources, escalated, reason}` JSON so the CLI and a future chat widget share one backend.
-5. **Offline ingestion pipeline** — watch `docs/` for changes, re-chunk and re-embed only changed files, persist the index to disk.
+1. **Stretch: handoff summary** - generate a 3-line summary (what was asked, what's known, why escalated) attached to the escalated ticket so the human agent has instant context.
+2. **Confidence threshold tuning** - collect 50 real queries, label expected outcomes, grid-search the threshold.
+3. **Evaluation harness** - pytest suite over all Appendix B queries with LLM-as-judge faithfulness scoring.
+4. **FastAPI endpoint** - `/ask` POST → `{answer, sources, escalated, reason}` JSON so the CLI and a future chat widget share one backend.
+5. **Offline ingestion pipeline** - watch `docs/` for changes, re-chunk and re-embed only changed files, persist the index to disk.
