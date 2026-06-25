@@ -184,7 +184,7 @@ user query
     ▼ vector_store.py  — top-3 cosine search
     ▼ retriever.py     — filter by grounding threshold (≥ 0.35)
     ▼ escalation.py    — safety / human-request / no-answer checks
-    ▼ llm.py           — Groq ✅ (used) → Ollama → Anthropic, cite-only prompt
+    ▼ llm.py           — Groq  (used) → Ollama → Anthropic, cite-only prompt
     ▼ cli.py           — prints answer + sources, or escalation tag
 ```
 
@@ -214,12 +214,12 @@ user query
 
 | Query | Expected | Behaviour |
 |---|---|---|
-| "I opened the box, can I still return it, and is there a fee?" | Answer | ✅ Answers with 15% restocking fee from Returns & Refunds |
+| "I opened the box, can I still return it, and is there a fee?" | Answer |  Answers with 15% restocking fee from Returns & Refunds |
 | "How do I reset my SmartHub?" | Answer | ✅ Answers with 10-second button hold from SmartHub doc |
-| "My order hasn't shipped in 4 days, where is it?" | Partial / escalate | ✅ Cites 3-day contact rule; escalates if no tracking found |
-| "My SmartHub is getting very hot and smells like burning." | Escalate (safety) | ✅ `[ESCALATED — SAFETY]` — safety keyword match |
-| "This is the third time I've called, I want a refund and a manager NOW." | Escalate | ✅ `[ESCALATED — HUMAN REQUESTED]` — "manager" keyword |
-| "Do you offer bulk discounts for commercial installs?" | I don't know / escalate | ✅ `[ESCALATED — NO GROUNDED ANSWER]` — below threshold |
+| "My order hasn't shipped in 4 days, where is it?" | Partial / escalate |  Cites 3-day contact rule; escalates if no tracking found |
+| "My SmartHub is getting very hot and smells like burning." | Escalate (safety) |  `[ESCALATED — SAFETY]` — safety keyword match |
+| "This is the third time I've called, I want a refund and a manager NOW." | Escalate |  `[ESCALATED — HUMAN REQUESTED]` — "manager" keyword |
+| "Do you offer bulk discounts for commercial installs?" | I don't know / escalate |  `[ESCALATED — NO GROUNDED ANSWER]` — below threshold |
 
 ---
 
