@@ -162,6 +162,9 @@ Run `python cli.py` and try the queries below. They cover every behaviour the as
 
 <img width="1244" height="140" alt="image" src="https://github.com/user-attachments/assets/5fd79a95-cd9f-498b-999b-69224de26c96" />
 
+**15. how can we upgrade the SmartHub?**
+
+<img width="1473" height="278" alt="image" src="https://github.com/user-attachments/assets/69cbc92b-0c88-4881-8eac-7f884cbfa6fc" />
 
 ---
 
