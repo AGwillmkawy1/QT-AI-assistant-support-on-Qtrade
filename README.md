@@ -28,7 +28,7 @@ ollama pull llama3.2
 ollama serve          # runs on http://localhost:11434 by default
 ```
 
-**Option B — Groq API (free tier, recommended)**
+**Option B — Groq API (free tier, recommended)**   On my side, I used Groq API Key
 
 Sign up at **console.groq.com** (free, no credit card), create an API key, then:
 
