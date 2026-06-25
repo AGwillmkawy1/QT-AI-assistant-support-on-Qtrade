@@ -82,98 +82,86 @@ Run `python cli.py` and try the queries below. They cover every behaviour the as
 ### Answerable questions — grounded answers from the docs
 
 **1. Returns with a fee**
-```
+
 <img width="1454" height="187" alt="image" src="https://github.com/user-attachments/assets/b2b82c3c-ea10-4b14-b3f2-e800d194c325" />
 
-```
 
 **2. SmartHub reset**
 <img width="1471" height="244" alt="image" src="https://github.com/user-attachments/assets/f9b390e4-6f3f-4156-a547-a086c6292584" />
 
 
 **3. Shipping time and cost**
-```
+
 <img width="1439" height="193" alt="image" src="https://github.com/user-attachments/assets/5a23d54e-debc-41d3-b5d0-fef8e27c81be" />
 
-```
 
 **4. Wi-Fi connection**
-```
+
 <img width="1369" height="189" alt="image" src="https://github.com/user-attachments/assets/d6b173db-e4f5-4ea4-9b2e-bd85c5cb535a" />
 
-```
+
 
 **5. Warranty coverage**
-```
+
 <img width="1096" height="210" alt="image" src="https://github.com/user-attachments/assets/9413db7d-ad46-4d25-9b93-605080dbd3bd" />
 
-```
 
 **6. Filing a warranty claim**
-```
+
 <img width="1472" height="212" alt="image" src="https://github.com/user-attachments/assets/f4f39d55-1fa5-45c2-9143-49e7ca386b83" />
 
-```
 
 **7. Final sale and defective items (tricky)**
-```
+
 <img width="891" height="164" alt="image" src="https://github.com/user-attachments/assets/394f054c-b5c3-4667-8d96-ed552bd23087" />
 
-```
 
 **8. Order not shipped after 4 days (partial)**
-```
+
 <img width="1477" height="207" alt="image" src="https://github.com/user-attachments/assets/02e7f238-e9e2-4c2f-90d6-2925768e7192" />
 
-```
 
 ---
 
 ### Safety escalations — routed to human immediately
 
 **9. Burning smell / overheating**
-```
+
 <img width="1476" height="187" alt="image" src="https://github.com/user-attachments/assets/bf23cfc8-b717-4f88-a36f-bc790ee716c4" />
 
-```
 
 **10. Smoke and sparks**
-```
+
 <img width="1472" height="164" alt="image" src="https://github.com/user-attachments/assets/de95c7d4-e493-4c47-98d7-1346558843be" />
 
-```
 
 ---
 
 ### Human-request escalations — customer asks for a person
 
 **11. Angry customer demanding a manager**
-```
+
 <img width="1139" height="141" alt="image" src="https://github.com/user-attachments/assets/148d18c2-6208-408f-be30-d975b4e911e4" />
 
-```
 
 **12. Asking for a real person**
-```
+
 <img width="1014" height="142" alt="image" src="https://github.com/user-attachments/assets/6bc6a1f0-ae97-4ba3-a86b-00d1b0cbe2ae" />
 
-```
 
 ---
 
 ### No-answer escalations — topic not in the docs
 
 **13. Bulk discounts**
-```
+
 <img width="1278" height="146" alt="image" src="https://github.com/user-attachments/assets/b6b222b9-e58d-4690-afe9-760f7017aadb" />
 
-```
 
 **14. Cryptocurrency payment**
-```
+
 <img width="1244" height="140" alt="image" src="https://github.com/user-attachments/assets/5fd79a95-cd9f-498b-999b-69224de26c96" />
 
-```
 
 ---
 
